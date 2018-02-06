@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+		Example MVC Application (feat. Websockets)
+	</title>
+	<script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="signalr/hubs"></script>
+</head>
+<body>
+	@RenderBody()
+
+	<div id="content"></div>
+
+    <script type='text/javascript'>
+        var script = document.createElement('script');
+        script.type='text/javascript';
+
+        if(location.host.indexOf("localhost") >= 0) {
+            script.src = "http://localhost:44301/Content/site.bundle.js";
+            script.onerror = function() { 
+                var fallbackScript = document.createElement('script');
+                fallbackScript.type = 'text/javascript';
+                fallbackScript.src = '/Content/site.bundle.js';
+                document.getElementsByTagName('body')[0].appendChild(fallbackScript);
+
+                script.parentNode.removeChild(script);
+                console.log('\n---------------------------------------------------------------')
+                console.log('You are now using a fallback script as you are not in NPM debug mode but are running on localhost');
+                console.log('If you intend to debug this page in realtime (using hotloading) run npm start');
+                console.log('---------------------------------------------------------------\n')
+             };
+        }
+        else {
+            script.src = '/Content/site.bundle.js';      
+        }
+
+        document.getElementsByTagName('body')[0].appendChild(script);
+    </script>
+</body>
+</html>

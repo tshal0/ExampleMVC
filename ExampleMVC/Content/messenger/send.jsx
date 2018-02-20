@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 
 class Send extends React.Component {
     send() {
+        console.log("SEND_COMPONENT");
         this.props.newMessage({
             name: this.props.name || "",
             text: this.refs.msg.value
@@ -16,6 +17,7 @@ class Send extends React.Component {
     }
 
     render() {
+        console.log("render");
         return (
             <div className="Send">
                 <input type="text" ref="msg" />
@@ -36,6 +38,7 @@ const mapState = state => {
 };
 
 const mapDispatch = dispatch =>{
+    console.log("mapDispatch (SEND)");
     return {
         newMessage: msg => dispatch(newMessage(msg))
      };

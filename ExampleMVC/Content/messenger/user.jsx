@@ -10,6 +10,7 @@ class User extends React.Component{
     }
 
     rename() {
+        console.log("RENAME USER");
         this.props.setName(prompt('Your Name'));
     }
 
@@ -39,6 +40,7 @@ const mapState = state => {
 }
 
 const mapDispatch = dispatch => {
+    console.log("mapDispatch (USER)");
     return {
         setName: name => dispatch(setName(name))
     }

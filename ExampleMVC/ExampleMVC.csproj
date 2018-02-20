@@ -51,6 +51,14 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
@@ -87,6 +95,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,15 +160,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802161701200_Initial.cs" />
+    <Compile Include="Migrations\201802161701200_Initial.Designer.cs">
+      <DependentUpon>201802161701200_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802161719256_UpdateSchema.cs" />
+    <Compile Include="Migrations\201802161719256_UpdateSchema.Designer.cs">
+      <DependentUpon>201802161719256_UpdateSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802161734336_UpdateIdentityUser.cs" />
+    <Compile Include="Migrations\201802161734336_UpdateIdentityUser.Designer.cs">
+      <DependentUpon>201802161734336_UpdateIdentityUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Hubs\MessengerHub.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\SATSModel.cs" />
     <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\.redux\actions.js" />
     <Content Include="Content\.redux\middleware.js" />
     <Content Include="Content\.redux\reducers.js" />
-    <Content Include="Content\site.bundle.js" />
+    <Content Include="Content\site.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Libraries\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -167,6 +195,7 @@
     <Content Include="Content\messenger\base.jsx" />
     <Content Include="Content\messenger\history.jsx" />
     <Content Include="Content\messenger\send.jsx" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -201,6 +230,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802161701200_Initial.resx">
+      <DependentUpon>201802161701200_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802161719256_UpdateSchema.resx">
+      <DependentUpon>201802161719256_UpdateSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802161734336_UpdateIdentityUser.resx">
+      <DependentUpon>201802161734336_UpdateIdentityUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

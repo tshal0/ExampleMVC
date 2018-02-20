@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 
 class History extends React.Component {
     render() {
+        console.log(this.props.messages);
         return (
             <div className="History">
                 {this.props.messages.map((msg, i) => {

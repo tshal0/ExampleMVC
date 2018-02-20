@@ -5,6 +5,8 @@ import { actions } from './actions';
  * Messages this user has
  */
 const messages = (state = [], action) => {
+    console.log("messages (REDUCERS)");
+    
     switch (action.type) {
         case actions.NEW_MESSAGE:
             return [...state, action.message];
@@ -17,6 +19,7 @@ const messages = (state = [], action) => {
  * User's current name
  */
 const name = (state = "Unnamed", action) => {
+    console.log("name (REDUCERS)");
     switch (action.type) {
         case actions.SET_NAME:
             return action.name;

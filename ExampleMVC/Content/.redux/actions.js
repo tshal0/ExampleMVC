@@ -11,6 +11,7 @@ export const actions = {
  * @param {object} msg - Message that was sent to the user
  */
 export const newMessage = message => {
+    console.log("newMessage (ACTION)" + message);
     return {
         type: actions.NEW_MESSAGE,
         message
